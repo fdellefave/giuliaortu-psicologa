@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — restyling "caldo" di luglio 2026.
+   Palette crema/marrone/arancione con tocchi di verde salvia,
+   ispirata al riferimento grafico approvato in sessione.
+   Tutti i colori del sito vivono qui: per cambiare un colore,
+   basta modificarlo una volta in questo blocco.
+
+   NOTA STORICA: i NOMI dei token (bosco, felce, …) sono quelli
+   della prima versione del sito e sono usati in tutti i file;
+   per non toccare 15 file si è cambiato solo il VALORE:
+   oggi "bosco" è il marrone caffè scuro e "felce" il marrone
+   talpa del testo secondario.
+   ============================================================ */
+@theme {
+  /* Il mockup usa un unico breakpoint responsive a 960px:
+     sotto → layout mobile, sopra → layout desktop (prefisso lg:). */
+  --breakpoint-lg: 961px;
+
+  /* Palette */
+  --color-fondo: #f6f2ec;
+  /* sfondo pagina (crema caldo) */
+  --color-salvia: #8c9a7b;
+  /* verde salvia: occhielli, icone, WhatsApp */
+  --color-salvia-scura: #6f7d60;
+  /* hover del verde salvia */
+  --color-bosco: #2c251e;
+  /* marrone caffè: testo principale / superfici scure */
+  --color-felce: #6b5f53;
+  /* marrone talpa: testo secondario */
+  --color-salvia-spenta: #8b9483;
+  /* testo attenuato, etichette (tocco verde) */
+  --color-crema: #efe8dc;
+  /* sezioni alternate, riquadri (beige) */
+  --color-bordo: #e8e0d2;
+  /* bordo card */
+  --color-bordo-input: #ded3c2;
+  /* bordo campi e selettori */
+  --color-bordo-header: #e6decf;
+  /* bordo sotto l'header */
+  --color-riga-menu: #eae2d4;
+  /* divisori menu mobile */
+  --color-footer-chiaro: #b5a996;
+  /* testo footer */
+  --color-footer-spento: #8c8170;
+  /* testo footer attenuato */
+  --color-footer-riga: #40372c;
+  /* divisore footer / riquadri su fondo scuro */
+  --color-sabbia: #d9c7b8;
+  /* marroncino chiaro: bordo citazione, dettagli */
+  --color-arancione: #6F7D60;
+  /* arancione terracotta: bottoni primari, evidenziazioni */
+  --color-arancione-scuro: #a64f2e;
+  /* hover dell'arancione */
+
+  /* Tipografia self-hosted (vedi src/app/layout.tsx):
+     Figtree per il testo, Fraunces per titoli e logo. */
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-titoli: var(--font-fraunces), Georgia, serif;
+
+  /* Ombra leggera delle card */
+  --shadow-carta: 0 2px 24px rgba(44, 37, 30, 0.06);
+}
+
+/* ---------- Base ---------- */
+html {
+  /* Navigazione single page: scorrimento morbido verso le sezioni;
+     il margine in alto compensa l'altezza dell'header sticky. */
+  scroll-behavior: smooth;
+  scroll-padding-top: 108px;
+  /* header sticky: logo 80px + padding 10px×2 */
+}
+
+@media (max-width: 960px) {
+  html {
+    scroll-padding-top: 84px;
+    /* su mobile il logo è 56px */
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-fondo);
+  color: var(--color-bosco);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Le regole base stanno in @layer base: così le classi componente
+   (@layer components, es. .btn-primario) e le utility vincono sempre.
+   ⚠️ Non spostarle fuori dal layer: una regola `a { color: … }` NON
+   layerizzata batterebbe i colori dei bottoni-link (bug già successo). */
+@layer base {
+
+  /* Titoli nel serif morbido del restyling: l'asse variabile "SOFT"
+     arrotonda i terminali, "WONK" resta disattivato. Peso 500:
+     più sottile ed elegante del grassetto (deciso il 16/07). */
+  h1,
+  h2,
+  h3,
+  .font-titoli {
+    font-family: var(--font-titoli);
+    font-weight: 500;
+    font-variation-settings:
+      "SOFT" 60,
+      "WONK" 0;
+  }
+
+  a {
+    color: var(--color-arancione);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-arancione-scuro);
+  }
+
+  ::placeholder {
+    color: #a99c89;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-arancione);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   COMPONENTI RICORRENTI
+   (le dimensioni — padding, font-size — variano da punto a
+   punto e vengono aggiunte con le utility di Tailwind)
+   ============================================================ */
+@layer components {
+
+  /* Contenitore centrale: max 1160px con padding laterale 24px */
+  .contenitore {
+    max-width: 1160px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  /* Occhiello: la piccola etichetta maiuscola sopra i titoli
+     (resta verde salvia: è uno dei "tocchi di verde" del restyling) */
+  .occhiello {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-salvia);
+    text-transform: uppercase;
+  }
+
+  /* Parola evidenziata dentro un titolo: corsivo arancione,
+     nello stile del riferimento grafico. */
+  .evidenzia {
+    font-style: italic;
+    color: var(--color-arancione);
+  }
+
+  /* Bottone pill primario (arancione terracotta) */
+  .btn-primario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-arancione);
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-primario:hover {
+    background: var(--color-arancione-scuro);
+    color: #ffffff;
+  }
+
+  .btn-primario:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .btn-primario:disabled:hover {
+    background: var(--color-arancione);
+  }
+
+  /* Bottone pill pieno verde salvia (canale WhatsApp) */
+  .btn-salvia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-salvia);
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-salvia:hover {
+    background: var(--color-salvia-scura);
+    color: #ffffff;
+  }
+
+  /* Bottone pill con contorno scuro */
+  .btn-contorno {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1.5px solid var(--color-bosco);
+    color: var(--color-bosco);
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .btn-contorno:hover {
+    background: var(--color-bosco);
+    color: #ffffff;
+  }
+
+  /* Bottone pill con contorno salvia (card servizi) */
+  .btn-contorno-salvia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1.5px solid var(--color-salvia);
+    color: var(--color-salvia-scura);
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .btn-contorno-salvia:hover {
+    background: var(--color-salvia);
+    color: #ffffff;
+  }
+
+  /* Card bianca con bordo sottile e ombra leggera */
+  .carta {
+    background: #ffffff;
+    border: 1px solid var(--color-bordo);
+    box-shadow: var(--shadow-carta);
+  }
+
+  /* Campo di input / textarea / select */
+  .campo {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 6px;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1.5px solid var(--color-bordo-input);
+    font-size: 15px;
+    color: var(--color-bosco);
+    background: #ffffff;
+    font-family: inherit;
+  }
+
+  .campo:focus {
+    outline: none;
+    border-color: var(--color-arancione);
+  }
+
+  /* Etichetta dei campi */
+  .etichetta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-bosco);
+  }
+
+  /* Riquadro placeholder a righe diagonali (in attesa delle foto reali) */
+  .segnaposto-foto {
+    background: repeating-linear-gradient(45deg,
+        #efe8dc,
+        #efe8dc 12px,
+        #e4d9c8 12px,
+        #e4d9c8 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .segnaposto-foto>span {
+    font-family: ui-monospace, monospace;
+    font-size: 13px;
+    color: var(--color-salvia-spenta);
+    background: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+}

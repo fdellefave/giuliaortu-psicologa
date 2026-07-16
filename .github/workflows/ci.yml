@@ -1,0 +1,29 @@
+# Controllo automatico a ogni push/PR: lint + build.
+# La build non richiede variabili d'ambiente: le chiavi vengono
+# lette solo a runtime, quando il sito è in esecuzione.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verifica:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Installazione dipendenze
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
