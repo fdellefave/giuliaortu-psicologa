@@ -17,9 +17,9 @@ export const STUDIO = {
   telefono: "350 537 1588",
   /** Stesso numero in formato internazionale senza spazi:
       usato per il tasto di chiamata (tel:) e per il link WhatsApp. */
-  telefonoInternazionale: "+393518629246",
+  telefonoInternazionale: "+393505371588",
   email: "giuliaortu.psicologa@gmail.com",
-  albo: "Iscritta all'Albo degli Psicologi del Lazio n. 33345",
+  albo: "Iscritta all'Albo degli Psicologi del Lazio",
   /** Profili social, mostrati nel footer. */
   social: {
     instagram: "https://www.instagram.com/giuliaortu.psicologa/",

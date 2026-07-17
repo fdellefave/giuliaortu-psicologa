@@ -79,14 +79,15 @@ export default function Home() {
               identico al file (1024×559): immagine intera, senza ritagli.
               Su mobile è nascosta: la hero resta solo testo. */}
           <div className="hidden w-full min-w-[280px] flex-1 lg:block lg:flex-[2]">
-            {/* Foto reale della hero (public/images/homepage.jfif).
-                Per tornare all'illustrazione stilizzata: <IllustrazioneHero />
-                (componente ancora disponibile in components/). */}
+            {/* Foto reale della hero (public/images/homepage.jpg — era .jfif,
+                rinominata: l'ottimizzatore immagini di Vercel non accetta
+                quell'estensione). Per tornare all'illustrazione stilizzata:
+                <IllustrazioneHero /> (ancora disponibile in components/). */}
             <Foto
               etichetta="foto homepage"
               ratio="1024/559"
               radius={28}
-              src="/images/homepage.jfif"
+              src="/images/homepage.jpg"
               alt="Dott.ssa Giulia Ortu — psicologa a Roma"
             />
           </div>
