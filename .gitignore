@@ -6,6 +6,7 @@
 /out/
 
 # Variabili d'ambiente (NON committare mai le chiavi!)
+# `.env.example` invece VA committato: è il template senza segreti.
 .env
 .env.local
 .env*.local

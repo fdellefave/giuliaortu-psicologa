@@ -304,4 +304,17 @@ immagine OpenGraph · analytics privacy-friendly (Plausible/Umami) · test autom
   responsive (breakpoint unico, sezioni impilate, menu hamburger, overflow-x hidden, giorni
   scorrevoli). Lint+build senza env ok. Aggiunta successiva: l'immagine della hero è
   nascosta su mobile (`hidden lg:block`), la hero resta solo testo.
+- **16/07/2026 (nonies)** — Social e icone: nuovi campi `STUDIO.social` (Instagram, LinkedIn,
+  URL puliti dai parametri di tracciamento) con icone nel footer; nuovo `components/Icone.tsx`
+  (calendario, telefono, WhatsApp, Instagram, LinkedIn — tutte `currentColor`); icona
+  calendario su tutti i bottoni "Prenota", WhatsApp e telefono sui rispettivi canali rapidi
+  (`gap-2` sui bottoni). Immagine hero portata a `lg:flex-[2]`. Federico ha virato al
+  verde salvia-scuro il sole/dettagli dell'illustrazione e la favicon (#C4623B→#6F7D60 in
+  quei file): scelta sua, mantenuta. Lint+build ok.
+- **16/07/2026 (decies)** — Hero con tre canali diretti al posto di Prenota+Scrivimi:
+  **WhatsApp** (salvia, apre la chat con **messaggio precompilato** — testo in
+  `STUDIO.messaggioWhatsApp`, usato anche dal bottone della sezione prenota; scritto
+  "primo colloquio conoscitivo", NON "prova gratuita": il sito non promette gratuità,
+  confermare con Federico/Giulia), **Chiamami** (contorno, dialer `tel:`) e **Prenota una
+  seduta** (arancione, scorre a `#prenota`). Lint+build ok, runtime verificato.
 - *(aggiungere qui le decisioni delle prossime sessioni)*

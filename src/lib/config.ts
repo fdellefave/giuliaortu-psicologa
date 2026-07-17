@@ -20,6 +20,14 @@ export const STUDIO = {
   telefonoInternazionale: "+393518629246",
   email: "info@giuliaortupsicologa.it",
   albo: "Iscritta all'Albo degli Psicologi del Lazio n. 33345",
+  /** Profili social, mostrati nel footer. */
+  social: {
+    instagram: "https://www.instagram.com/giuliaortu.psicologa/",
+    linkedin: "https://www.linkedin.com/in/giulia-ortu-387420137/",
+  },
+  /** Messaggio precompilato quando si apre WhatsApp dal sito. */
+  messaggioWhatsApp:
+    "Ciao Giulia! Sono interessato/a a fare un primo colloquio conoscitivo. Quando hai disponibilità?",
 } as const;
 
 export const PRENOTAZIONI = {

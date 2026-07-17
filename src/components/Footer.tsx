@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { STUDIO } from "@/lib/config";
+import { IconaInstagram, IconaLinkedIn } from "@/components/Icone";
 
 /* Come nel menu dell'header: ancore delle sezioni della single page. */
 const VOCI_MENU = [
@@ -19,6 +20,26 @@ export default function Footer() {
             <p className="m-0 max-w-[280px] text-[14px] leading-[1.7] text-footer-chiaro">
               Psicologa a Roma, in studio e online. Un ascolto senza fretta e senza giudizio.
             </p>
+            <div className="mt-5 flex gap-4">
+              <a
+                href={STUDIO.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-footer-chiaro hover:text-white"
+              >
+                <IconaInstagram dimensione={20} />
+              </a>
+              <a
+                href={STUDIO.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-footer-chiaro hover:text-white"
+              >
+                <IconaLinkedIn dimensione={20} />
+              </a>
+            </div>
           </div>
 
           <div>

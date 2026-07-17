@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { STUDIO } from "@/lib/config";
+import { IconaCalendario } from "@/components/Icone";
 
 /* Il sito è una "single page": le voci puntano alle ancore delle sezioni
    della home. Il prefisso "/" fa funzionare i link anche da /privacy
@@ -47,7 +48,8 @@ export default function Header() {
               {voce.etichetta}
             </Link>
           ))}
-          <Link href="/#prenota" className="btn-primario px-6 py-3 text-[14.5px]">
+          <Link href="/#prenota" className="btn-primario gap-2 px-6 py-3 text-[14.5px]">
+            <IconaCalendario dimensione={16} />
             Prenota una seduta
           </Link>
         </nav>
@@ -82,8 +84,9 @@ export default function Header() {
           <Link
             href="/#prenota"
             onClick={chiudi}
-            className="btn-primario mt-[14px] px-6 py-[14px] text-[15px]"
+            className="btn-primario mt-[14px] gap-2 px-6 py-[14px] text-[15px]"
           >
+            <IconaCalendario dimensione={16} />
             Prenota una seduta
           </Link>
           <Link

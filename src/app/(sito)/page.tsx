@@ -3,6 +3,7 @@ import ContactForm from "@/components/ContactForm";
 import Foto from "@/components/Foto";
 import { SERVIZI, STUDIO } from "@/lib/config";
 import { generaGiorniPrenotabili } from "@/lib/slots";
+import { IconaCalendario, IconaTelefono, IconaWhatsApp } from "@/components/Icone";
 import Link from "next/link";
 
 /**
@@ -28,6 +29,9 @@ const FORMAZIONE = [
 export default function Home() {
   const giorni = generaGiorniPrenotabili();
 
+  /** Link WhatsApp con messaggio precompilato (testo in config.ts). */
+  const linkWhatsApp = `https://wa.me/${STUDIO.telefonoInternazionale.replace("+", "")}?text=${encodeURIComponent(STUDIO.messaggioWhatsApp)}`;
+
   return (
     <main>
       {/* ---------- Hero ---------- */}
@@ -42,20 +46,39 @@ export default function Home() {
               Se stai attraversando un momento difficile, o senti che è arrivato il momento di
               occuparti di te, sono qui per ascoltarti. Senza fretta, senza giudizio.
             </p>
+            {/* Tre canali diretti: WhatsApp (messaggio precompilato),
+                telefonata (dialer) e prenotazione (scorre alla sezione). */}
             <div className="mb-7 flex flex-wrap gap-[14px]">
-              <Link href="#prenota" className="btn-primario px-[30px] py-[15px] text-[15.5px]">
+              <a
+                href={linkWhatsApp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-salvia gap-2 px-7 py-[13.5px] text-[15.5px]"
+              >
+                <IconaWhatsApp />
+                WhatsApp
+              </a>
+              <a
+                href={`tel:${STUDIO.telefonoInternazionale}`}
+                className="btn-contorno gap-2 px-7 py-[13.5px] text-[15.5px]"
+              >
+                <IconaTelefono />
+                Chiamami
+              </a>
+              <Link
+                href="#prenota"
+                className="btn-primario gap-2 px-[30px] py-[15px] text-[15.5px]"
+              >
+                <IconaCalendario />
                 Prenota una seduta
-              </Link>
-              <Link href="#contatti" className="btn-contorno px-7 py-[13.5px] text-[15.5px]">
-                Scrivimi
               </Link>
             </div>
             <div className="text-[14px] text-salvia-spenta">Studio a Roma · Anche online</div>
           </div>
-          {/* Colonna immagine più larga (flex 1.5) e ratio identico al file
-              (1024×559): l'immagine si vede intera, senza ritagli.
+          {/* Colonna immagine doppia rispetto al testo (flex 2) e ratio
+              identico al file (1024×559): immagine intera, senza ritagli.
               Su mobile è nascosta: la hero resta solo testo. */}
-          <div className="hidden w-full min-w-[280px] flex-1 lg:block lg:flex-[1.5]">
+          <div className="hidden w-full min-w-[280px] flex-1 lg:block lg:flex-[2]">
             {/* Foto reale della hero (public/images/homepage.jfif).
                 Per tornare all'illustrazione stilizzata: <IllustrazioneHero />
                 (componente ancora disponibile in components/). */}
@@ -121,8 +144,9 @@ export default function Home() {
 
               <Link
                 href="#prenota"
-                className="btn-primario mt-10 px-[30px] py-[15px] text-[15.5px]"
+                className="btn-primario mt-10 gap-2 px-[30px] py-[15px] text-[15.5px]"
               >
+                <IconaCalendario />
                 Prenota una seduta
               </Link>
             </div>
@@ -170,8 +194,9 @@ export default function Home() {
                 </div>
                 <Link
                   href="#prenota"
-                  className="btn-contorno-salvia px-6 py-[11px] text-[14.5px]"
+                  className="btn-contorno-salvia gap-2 px-6 py-[11px] text-[14.5px]"
                 >
+                  <IconaCalendario dimensione={16} />
                   Prenota
                 </Link>
               </div>
@@ -201,17 +226,19 @@ export default function Home() {
           {/* Canali rapidi: una riga a tutta larghezza sopra le due card */}
           <div className="mb-8 flex flex-col gap-3 lg:flex-row">
             <a
-              href={`https://wa.me/${STUDIO.telefonoInternazionale.replace("+", "")}`}
+              href={linkWhatsApp}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-salvia flex-1 px-5 py-[11px] text-[14.5px]"
+              className="btn-salvia flex-1 gap-2 px-5 py-[11px] text-[14.5px]"
             >
+              <IconaWhatsApp />
               Scrivimi su WhatsApp
             </a>
             <a
               href={`tel:${STUDIO.telefonoInternazionale}`}
-              className="btn-primario flex-1 px-5 py-[11px] text-[14.5px]"
+              className="btn-primario flex-1 gap-2 px-5 py-[11px] text-[14.5px]"
             >
+              <IconaTelefono />
               Chiama {STUDIO.telefono}
             </a>
           </div>
