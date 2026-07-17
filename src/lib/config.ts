@@ -13,12 +13,12 @@ export const STUDIO = {
   nomeBreve: "Giulia Ortu",
   professione: "Psicologa",
   citta: "Roma",
-  indirizzo: "Via Lorenzo Vidaschi 7, Roma",
-  telefono: "351 862 9246",
+  indirizzo: "Via Vallebona, 51, Roma",
+  telefono: "350 537 1588",
   /** Stesso numero in formato internazionale senza spazi:
       usato per il tasto di chiamata (tel:) e per il link WhatsApp. */
   telefonoInternazionale: "+393518629246",
-  email: "info@giuliaortupsicologa.it",
+  email: "giuliaortu.psicologa@gmail.com",
   albo: "Iscritta all'Albo degli Psicologi del Lazio n. 33345",
   /** Profili social, mostrati nel footer. */
   social: {

@@ -22,7 +22,14 @@ export default function LoginForm() {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
-      setErrore("Credenziali non valide.");
+      // Distinguiamo il rifiuto vero (email/password sbagliate) dai
+      // problemi di configurazione/rete (chiavi errate, server non
+      // riavviato dopo aver compilato .env.local, ecc.).
+      setErrore(
+        error.message.includes("Invalid login credentials")
+          ? "Credenziali non valide."
+          : `Impossibile contattare il servizio di accesso (${error.message}). Controlla le chiavi in .env.local e riavvia il server.`
+      );
       setInCorso(false);
       return;
     }

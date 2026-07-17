@@ -22,7 +22,7 @@
 ## 2. Cos'è il progetto
 
 Sito vetrina con **prenotazione online reale** per la Dott.ssa Giulia Ortu, psicologa a Roma
-(studio in Via Lorenzo Vidaschi 7 + sedute online). Nato dalla trasformazione di un mockup
+(studio in Via Vallebona, 51 + sedute online). Nato dalla trasformazione di un mockup
 HTML approvato dal cliente, poi **evoluto in due passaggi decisi con Federico il 16/07/2026**:
 ① struttura **single page** (sezioni con ancore al posto delle pagine separate);
 ② **restyling "caldo"** ispirato a un riferimento grafico fornito in sessione (palette
