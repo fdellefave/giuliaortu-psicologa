@@ -1,9 +1,9 @@
 import BookingFlow from "@/components/BookingFlow";
 import ContactForm from "@/components/ContactForm";
 import Foto from "@/components/Foto";
+import { IconaCalendario, IconaTelefono, IconaWhatsApp } from "@/components/Icone";
 import { SERVIZI, STUDIO } from "@/lib/config";
 import { generaGiorniPrenotabili } from "@/lib/slots";
-import { IconaCalendario, IconaTelefono, IconaWhatsApp } from "@/components/Icone";
 import Link from "next/link";
 
 /**
@@ -23,7 +23,7 @@ const FORMAZIONE = [
   "Laurea in Psicologia Clinica, Università degli Studi di Roma",
   "Specializzazione in Psicoterapia Cognitivo-Comportamentale",
   "Formazione continua in psicologia dell'adolescenza e terapia familiare",
-  "Iscritta all'Albo degli Psicologi del Lazio, n. 33345",
+  "Iscritta all'Albo degli Psicologi del Lazio",
 ];
 
 export default function Home() {
